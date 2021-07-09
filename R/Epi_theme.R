@@ -93,35 +93,36 @@ scale_fill_epi <- function(primary = "blue", other = "light blue",
 
 
 # Theme -------------------------------------------------------------------
-element_blank <- ggplot2::element_blank()
-element_line <- ggplot2::element_line()
-element_rect <- ggplot2::element_rect()
-element_text <- ggplot2::element_text()
+#element_blank <- ggplot2::element_blank()
+#element_line <- ggplot2::element_line()
+#element_rect <- ggplot2::element_rect()
+#element_text <- ggplot2::element_text()
 
 #' @export
-theme_epi <- function(discretes = TRUE, ...) {
-  ggplot2::theme_minimal(base_family = "Ubuntu Condensed") +
+theme_epi <- function(base_family = "Ubuntu Condensed",fontsize = 5, ...) {
+
+  ggplot2::theme_minimal(base_family = base_family) %+replace%
     ggplot2::theme(
       text = element_text(color = epi_pal("black")()),
       panel.grid.major.x = element_blank(),
       panel.grid.minor = element_blank(),
       panel.grid.major.y = element_line(linetype = "dotted", size = 0.3, color = epi_pal("dark grey")()),
       axis.title = element_blank(),
-      plot.title = element_text(face = "bold", size = 25, margin = margin(b = 10), hjust = 0.030),
-      plot.subtitle = element_text(size = 15, margin = margin(b = 20), hjust = 0.030),
-      plot.caption = element_text(size = 15, margin = margin(b = 0, t = 10), color = epi_pal("grey")()),
-      axis.text.y = element_text(size = 18, color = epi_pal("grey")()),
-      axis.text.x = element_text(size = 18, color = epi_pal("dark grey")()), # element_blank(),
-      strip.text = element_text(color = epi_pal("dark grey")(), size = 20, face = "bold", hjust = 0.030),
+      plot.title = element_text(face = "bold", size = 5*fontsize, margin = margin(b = 10), hjust = 0.030),
+      plot.subtitle = element_text(size = 3*fontsize, margin = margin(b = 20), hjust = 0.030),
+      plot.caption = element_text(size = 3*fontsize, margin = margin(b = 0, t = 10), color = epi_pal("grey")()),
+      axis.text.y = element_text(size = 4*fontsize, color = epi_pal("grey")()),
+      axis.text.x = element_text(size = 4*fontsize, color = epi_pal("dark grey")()), # element_blank(),
+      strip.text = element_text(color = epi_pal("dark grey")(), size = 4*fontsize, face = "bold", hjust = 0.030),
       plot.background = element_rect(fill = epi_pal("white")(), color = NA),
       plot.margin = unit(c(2, 2, 2, 2) / 2.5, "cm"),
       # legend.key = element_rect(colour = "transparent", fill = "white"),
       # legend.background = element_rect(alpha = 0),
       legend.position = "top",
       legend.spacing = unit(0.1, "lines"),
-      legend.title = element_text(family = "Ubuntu Condensed", size = 20),
-      legend.text = element_text(family = "Ubuntu Condensed", size = 18),
+      legend.title = element_text(size = 4*fontsize),
+      legend.text = element_text(size = 3.5*fontsize),
       legend.text.align = 0
-    ) +
+    ) %+replace%
     theme(...)
 }

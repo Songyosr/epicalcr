@@ -9,5 +9,5 @@ options(
     License = "MIT + file LICENSE",
     Version = "0.0.0.9000"
   ),
-  usethis.protocol  = "ssh"
+  usethis.protocol = "ssh"
 )
